@@ -47,7 +47,7 @@ ol {
   
   max-height: 534px;
   width: 100%;
-  /* margin-left: 30px; */
+
 }
 
 .result {
@@ -64,25 +64,29 @@ ol {
 .content__list {
   position: relative;
   height: 298px;
-  overflow:auto;
+  overflow-y:auto;
   min-width: 398px;
 }
 
+/* Скрываем скроллбар в WebKit-браузерах (Chrome, Safari, Edge) */
+.content__list::-webkit-scrollbar {
+  display: none;
+}
+
 .content__details {
-  /* flex: 1; */
   display: flex;
   flex-direction: column; 
   gap: 20px; 
 }
 
 .result__video-container {
-  min-height: 386px;
   min-width: 711px;
   position: relative;
   margin-bottom: 16px;
 }
 
 .result__video {
+  height: 386px;
   width: 100%;
   object-fit: cover;
 }
