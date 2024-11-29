@@ -51,7 +51,7 @@ ol {
 }
 
 .result {
-  width:711px;
+  min-width:711px;
 }
 
 
@@ -61,11 +61,19 @@ ol {
 
 }
 
+.content__details {
+  min-width: 399px ;
+  display: flex;
+  flex-direction: column; 
+  gap: 20px; 
+}
+
 .content__list {
   position: relative;
   height: 298px;
   overflow-y:auto;
-  min-width: 398px;
+  width: 100%;
+  padding: 3px 3px 0 3px;
 }
 
 /* Скрываем скроллбар в WebKit-браузерах (Chrome, Safari, Edge) */
@@ -73,11 +81,6 @@ ol {
   display: none;
 }
 
-.content__details {
-  display: flex;
-  flex-direction: column; 
-  gap: 20px; 
-}
 
 .result__video-container {
   min-width: 711px;
@@ -94,7 +97,7 @@ ol {
 .content__list-item {
   display: flex;
   flex-direction: column;
-  padding-bottom: 32px;
+  margin-bottom: 30px;
   width: 100%;
 }
 
@@ -154,7 +157,7 @@ ol {
   color: #545050;
 }
 
-.search-form fieldset.search-form__fieldset {
+.search-form__fieldset {
   border: none;
 }
 
@@ -166,13 +169,74 @@ ol {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   white-space: nowrap;
+}   
+
+
+/* кнопки и их состояния */
+
+.botton:focus {
+  outline: none; 
+  border: none;
 } 
+
+.button {
+  cursor: pointer;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid white;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: 18px;
+  font-weight: 700;
+  text-align: center;
+}
 
 .search-form__submit-button {
  min-width: 194px;
- height: 34px;
+ min-height: 34px;
  margin-top: auto;
 }
+
+.more-button {
+  min-width: 399px;
+  min-height: 34px;
+}
+
+.button:active {
+  background-color: #545050 ;
+}
+
+.button:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+.button:focus-visible {
+  outline: white solid 1px;
+  outline-offset: 1px; 
+}
+
+/* секция состояний .content__details */
+
+.content__video-card:active {
+  background-color: #545050;
+}
+
+.content__video-card:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+/* .content__video-card:focus {
+  outline: none ;
+} */
+
+.content__video-card:has(:focus-visible) {
+  outline: white solid 1px;
+  outline-offset: 1px; 
+}
+
+
+
 
 .search-form__label {
   display: flex;
@@ -181,24 +245,26 @@ ol {
   gap: 5px; 
 }
 
-.search-form__label input[type="checkbox"],
-.search-form__label input[type="text"],
-.search-form__submit-button {
-  cursor: pointer;
+ .search-form__textfield:focus {
+  outline: none;
+} 
+.search-form__textfield:focus-visible {
+  outline: white solid 1px;
+  outline-offset: 1px; 
 }
-
 
 
 .search-form__textfield {
   border: 1px solid white;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
   border-left:  none;
   border-right:  none;
   appearance: none;
-  font-size: 18px;
-  font-weight: 400;
   background-color: transparent;
   color: #fff;
-  min-width: 245px; /* Минимальная ширина */
+  min-width: 245px; 
 }
 
 .search-form__checkbox-list {
@@ -207,26 +273,35 @@ ol {
   gap: 15px;
 }
 
+
+.search-form__label:has(:focus-visible) {
+  outline: white solid 1px;
+  outline-offset: 1px;
+}
+
+
 .search-form__pseudo-checkbox {
+  position: relative;
+  cursor: pointer;
   display:block;
   width: 19px;
   height: 19px;
   border: 1px solid #fff;
-  position: relative;
   background-color: transparent;
+} 
+
+.search-form__checkbox-list .search-form__label:hover {
+  cursor: pointer;
+  text-decoration: underline white;
 }
 
-.search-form__pseudo-checkbox::after {
-  content: '';
-  top: 50%;
-  left: 50%;
-  width: 13px;
-  height: 13px;
+ /* состояние Active */
+.visually-hidden:checked + .search-form__pseudo-checkbox {
   background-color: white;
-  transform: translate(-50%, -50%) scale(0);
-}
-
-.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
-  transform: translate(-50%, -50%) scale(1); /* Появляется при чекбоксе */
+  width: 15px;
+  height: 15px;
+  outline: 1px solid white;
+  outline-offset: 1px;
+  margin: 2px;
 }
 
