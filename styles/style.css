@@ -44,18 +44,12 @@ ol {
   display: flex;  
   justify-content: space-evenly;
   align-items: flex-end;
-  
-  max-height: 534px;
+  height: 534px;
   width: 100%;
 }
 
 .result {
-  min-width:711px;
-}
-
-.search-form {
-  display: flex;
-  justify-content: space-between;
+  inline-size:711px;
 }
 
 .content__details {
@@ -73,21 +67,17 @@ ol {
   padding: 3px 3px 0 3px;
 }
 
-/* скрываем скроллбар в webKit-браузерах (Chrome, Safari, Edge) */
-.content__list::-webkit-scrollbar {
-  display: none;
-}
-
 .result__video-container {
   min-width: 711px;
   position: relative;
-  margin-bottom: 16px;
+  margin-block-end: 16px;
 }
 
 .result__video {
   height: 386px;
   width: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .content__list-item {
@@ -95,6 +85,10 @@ ol {
   flex-direction: column;
   margin-bottom: 30px;
   width: 100%;
+}
+
+.content__list:last-child {
+  margin-bottom: 0;
 }
 
 .content__card-link {
@@ -120,31 +114,40 @@ ol {
 }
 
 .content__video-card-title {
-  font-family: Oswald;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 30px;
   text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 200px;
 }
 
 .content__video-card-description {
   font-weight: 400;
   font-size: 18px;
-  line-height: 16.2px;
+  line-height: 1.6;
 }
 
 .title {
   text-transform: uppercase;
-  font-family: Oswald;
+  font-family:'Oswald', sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 75px;
   line-height: 70.5px;
 }
 
+.search-form {
+  display: flex;
+  justify-content: space-between;
+}
+
 .search-form__fieldset {
   border: none;
-  min-width: 225px;
+  width: 225px;
 }
 
 
@@ -169,7 +172,6 @@ ol {
 }   
 
 /* кнопки и их состояния */
-
 .botton:focus {
   outline: none; 
   border: none;
@@ -184,17 +186,16 @@ ol {
   font-size: 18px;
   font-weight: 700;
   text-align: center;
+  min-height: 34px;
 }
 
 .search-form__submit-button {
  min-width: 194px;
- min-height: 34px;
  margin-top: auto;
 }
 
 .more-button {
   min-width: 399px;
-  min-height: 34px;
 }
 
 .button:active {
@@ -212,16 +213,16 @@ ol {
 }
 
 /* секция состояний .content__details */
-.content__video-card:active {
+.content__card-link:active {
   background-color: #545050;
 }
 
-.content__video-card:hover {
+.content__card-link:hover {
   text-decoration: underline;
   color: white;
 }
 
-.content__video-card:has(:focus-visible) {
+.content__card-link:has(:focus-visible) {
   outline: white solid 1px;
   outline-offset: 1px; 
 }
@@ -237,17 +238,14 @@ ol {
   gap: 5px; 
 }
 
+/* ниже прописано, что для  всех лейблов будет :has(:focus-visible), но я не понимаю, почему мой сброс outline на текст филд в фокусе не работает :( */
  .search-form__textfield:focus {
   outline: none;
 } 
-.search-form__textfield:focus-visible {
-  outline: white solid 1px;
-  outline-offset: 1px; 
-}
 
 .search-form__textfield {
   border: 1px solid white;
-  /* font-family: 'Fira Sans Condensed', sans-serif;  на макете дефолтный шрифт, а в задании Fira, не понимаю что из них ставить, поэтому закомментила*/
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-weight: 400;
   font-size: 18px;
   border-left:  none;
@@ -255,7 +253,7 @@ ol {
   appearance: none;
   background-color: transparent;
   color: #fff;
-  min-width: 245px; 
+  width: 225px; 
 }
 
 .search-form__checkbox-list {
@@ -264,6 +262,7 @@ ol {
   gap: 15px;
 }
 
+/* вот тут */
 .search-form__label:has(:focus-visible) {
   outline: white solid 1px;
   outline-offset: 1px;
@@ -284,8 +283,7 @@ ol {
   text-decoration: underline white;
 }
 
- /* состояние active через  checed, чтобы кнопка была визуально все время нажата, а не на секунду*/
-.visually-hidden:checked + .search-form__pseudo-checkbox {
+ .search-form__checkbox:checked + .search-form__pseudo-checkbox {
   background-color: white;
   width: 15px;
   height: 15px;
