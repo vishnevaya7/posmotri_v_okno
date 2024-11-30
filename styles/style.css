@@ -47,18 +47,15 @@ ol {
   
   max-height: 534px;
   width: 100%;
-
 }
 
 .result {
   min-width:711px;
 }
 
-
 .search-form {
   display: flex;
   justify-content: space-between;
-
 }
 
 .content__details {
@@ -76,11 +73,10 @@ ol {
   padding: 3px 3px 0 3px;
 }
 
-/* Скрываем скроллбар в WebKit-браузерах (Chrome, Safari, Edge) */
+/* скрываем скроллбар в webKit-браузерах (Chrome, Safari, Edge) */
 .content__list::-webkit-scrollbar {
   display: none;
 }
-
 
 .result__video-container {
   min-width: 711px;
@@ -117,7 +113,6 @@ ol {
   height: 103px;
   object-fit: cover;
   object-position: center;
-
 }
 
 .content__video-card-description-container {
@@ -129,7 +124,6 @@ ol {
   font-weight: 700;
   font-style: normal;
   font-size: 30px;
-
   text-transform: uppercase;
 }
 
@@ -137,7 +131,6 @@ ol {
   font-weight: 400;
   font-size: 18px;
   line-height: 16.2px;
-
 }
 
 .title {
@@ -149,6 +142,12 @@ ol {
   line-height: 70.5px;
 }
 
+.search-form__fieldset {
+  border: none;
+  min-width: 225px;
+}
+
+
 .search-form__fieldset-title {
   font-weight: 400;
   font-size: 18px;
@@ -157,10 +156,6 @@ ol {
 
 .content__accent {
   color: #545050;
-}
-
-.search-form__fieldset {
-  border: none;
 }
 
 .visually-hidden {
@@ -172,7 +167,6 @@ ol {
   clip-path: inset(50%);
   white-space: nowrap;
 }   
-
 
 /* кнопки и их состояния */
 
@@ -218,7 +212,6 @@ ol {
 }
 
 /* секция состояний .content__details */
-
 .content__video-card:active {
   background-color: #545050;
 }
@@ -252,10 +245,9 @@ ol {
   outline-offset: 1px; 
 }
 
-
 .search-form__textfield {
   border: 1px solid white;
-  /* font-family: 'Fira Sans Condensed', sans-serif; */
+  /* font-family: 'Fira Sans Condensed', sans-serif;  на макете дефолтный шрифт, а в задании Fira, не понимаю что из них ставить, поэтому закомментила*/
   font-weight: 400;
   font-size: 18px;
   border-left:  none;
@@ -272,12 +264,10 @@ ol {
   gap: 15px;
 }
 
-
 .search-form__label:has(:focus-visible) {
   outline: white solid 1px;
   outline-offset: 1px;
 }
-
 
 .search-form__pseudo-checkbox {
   position: relative;
@@ -294,7 +284,7 @@ ol {
   text-decoration: underline white;
 }
 
- /* состояние Active */
+ /* состояние active через  checed, чтобы кнопка была визуально все время нажата, а не на секунду*/
 .visually-hidden:checked + .search-form__pseudo-checkbox {
   background-color: white;
   width: 15px;
